@@ -53,15 +53,15 @@ do{ \
  *
  * ticks - not tested on anything other than x86
  * */
-#define oper_second(RANDOM,FUNCTION) \
+#define oper_second_random(RANDOM,FUNCTION) \
 do{\
-	printf("Operations per second: %s.\n",#FUNCTION);\
-	RANDOM;\
 \
 	unsigned i;\
 	uint64_t start, end;\
 	const unsigned iterations = 100000;\
 	uint64_t start_c, end_c;\
+	printf("Operations per second: %s.\n",#FUNCTION);\
+	RANDOM;\
 \
 	/* Load the caches*/\
 	for (i = 0; i < 1000; ++i) {\
@@ -81,6 +81,8 @@ do{\
 			iterations*1000000. / (end - start),\
 			(unsigned long)((end_c-start_c)/iterations) );\
 }while(0)
+
+#define oper_second(FUNCTION) oper_second_random(while(0),FUNCTION)
 
 uint64_t time_now();
 uint64_t cycles_now(void);

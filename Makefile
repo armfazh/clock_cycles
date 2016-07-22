@@ -1,4 +1,4 @@
-CFLAGS+=-Wall -Wextra -O2
+CFLAGS+=-Wall -Wextra -O2 -ansi -Wpedantic
 LDFLAGS+=-lcrypto
 
 PROG = bench.x
